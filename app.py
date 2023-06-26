@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify, make_response
 from data.online import online
 from data.fandomgt import gtfandom
+from data.pricegt import price
 import os, json
 
 app = Flask(__name__)
@@ -26,7 +27,15 @@ def gtwiki():
         keyword = request.args.get("keyword")
         return gtfandom(keyword)
     else:
-        return {'error':"querykeyword"}
+        return {'error':"Keyword Input Please"}
+
+@app.route('/api/gtprice', methods=['GET', 'POST'])
+def pricegt():
+    if (request.args.get('keyword')):
+        keyword = request.args.get("keyword")
+        return price(keyword)
+    else:
+        return {'error':"Keyword Input Please"}
 
 
 app.run(host='0.0.0.0', port=int(os.environ.get('port','5000')),debug=True)
