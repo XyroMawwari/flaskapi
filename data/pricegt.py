@@ -17,7 +17,7 @@ def price(kanjut):
     return {
         'title':title,
         'status':pricestat,
-        'Price & Rate':{
+        'result':{
             'price':prices,
             'rate':rate,
         }
