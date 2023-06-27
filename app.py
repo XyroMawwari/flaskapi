@@ -59,8 +59,8 @@ def qrcode_gen():
             qr.add_data(input_data)
             qr.make(fit=True)
             img = qr.make_image(fill='black', back_color='white')
-            img.save('img/qrcode.png')
-            return send_file('img/qrcode.png')
+            img.save('data/qrcode.png')
+            return send_file('data/qrcode.png')
         except Exception as e:
             print(e)
             return{
