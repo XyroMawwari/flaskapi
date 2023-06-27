@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, make_response
+from flask import Flask, render_template, request, jsonify, make_response, send_file
 from data.online import online
 from data.sertitolol import serti
 from data.fandomgt import gtfandom
