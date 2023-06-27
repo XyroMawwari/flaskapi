@@ -7,6 +7,6 @@ def serti(query):
     base = bs(requests.get(url).content,
               'html.parser').find('img', class_='img-fluid rounded mt-4')['src']
     img = baseurl+base
-    
-    print(img)
-serti('asu')
+    return {
+        'result':img
+    }
