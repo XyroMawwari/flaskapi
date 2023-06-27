@@ -4,6 +4,7 @@ from data.sertitolol import serti
 from data.fandomgt import gtfandom
 from data.pricegt import price
 import os, json
+import qrcode
 
 app = Flask(__name__)
 
