@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify, make_response
 from data.online import online
+from data.sertitolol import serti
 from data.fandomgt import gtfandom
 from data.pricegt import price
 import os, json
@@ -34,6 +35,14 @@ def pricegt():
     if (request.args.get('keyword')):
         keyword = request.args.get("keyword")
         return price(keyword)
+    else:
+        return {'error':"Keyword Input Please"}
+
+@app.route('/api/sertitolol', methods=['GET', 'POST'])
+def sertitolols():
+    if (request.args.get('keyword')):
+        keyword = request.args.get("keyword")
+        return serti(keyword)
     else:
         return {'error':"Keyword Input Please"}
 
