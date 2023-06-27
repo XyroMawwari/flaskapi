@@ -46,5 +46,29 @@ def sertitolols():
     else:
         return {'error':"Keyword Input Please"}
 
+@app.route('/api/qrcode', methods=['GET','POST'])
+def qrcode_gen():
+    if request.args.get('keyword'):
+        try:
+            input_data = request.args.get('keyword')
+            qr = qrcode.QRCode(
+            version=2,
+            box_size=15,
+            border=2)
+            qr.add_data(input_data)
+            qr.make(fit=True)
+            img = qr.make_image(fill='black', back_color='white')
+            img.save('img/qrcode.png')
+            return send_file('img/qrcode.png')
+        except Exception as e:
+            print(e)
+            return{
+                'result': 'Gagal membuat qr!'
+            }
+    else:
+        return{
+            'result': 'Masukkan parameter text!'
+        }
+
 
 app.run(host='0.0.0.0', port=int(os.environ.get('port','5000')),debug=True)
