@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, jsonify, make_response, send_file
 from data.online import online
 from data.sertitolol import serti
-from data.fandomgt import gtfandom
 from data.pricegt import price
 import os, json
 import qrcode
@@ -28,14 +27,6 @@ def gtwiki():
     if (request.args.get('keyword')):
         keyword = request.args.get("keyword")
         return gtfandom(keyword)
-    else:
-        return {'error':"Keyword Input Please"}
-
-@app.route('/api/gtprice', methods=['GET', 'POST'])
-def pricegt():
-    if (request.args.get('keyword')):
-        keyword = request.args.get("keyword")
-        return price(keyword)
     else:
         return {'error':"Keyword Input Please"}
 
